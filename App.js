@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -11,23 +11,30 @@ import {
 } from 'react-native';
 import Buttonx from './compo/Button';
 import SearchsBar from './compo/SearchBar';
+import BestSeller from './compo/Product/BestSeller';
+import BestCard from './compo/Product/BestCard';
+
 
 export default function App() {
+  
+
   return (
-    <View
+    <ScrollView  
+    showsVerticalScrollIndicator={false}
     style={[
       styles.container,
       {
         // Try setting `flexDirection` to `"row"`.
         flexDirection: 'column',
+        flex: 1,
         width: "100%",
-        top: 24,
+        top:10,
       },
     ]}>
-    <View style={{ flex: 0, backgroundColor: 'white',}} >
+    <View style={{ flex: null, backgroundColor: 'white',}} >
       
     <Text style={styles.text}>Delivery in 15 minutes</Text>
-    <Text style={{fontSize:18,bottom: 21, left: 8 }}>Kiverli, Aburoad</Text>
+    <Text style={{fontSize:18,bottom: 21, left: 9, top: 1}}>Kiverli, Aburoad</Text>
 
 
     <SearchsBar />
@@ -36,40 +43,38 @@ export default function App() {
 
 
   </View>
-    <View style={{height: 800, backgroundColor: 'darkorange'}}>
-    <ScrollView  style={{height: 999}}>
-        <Text style={{fontSize: 99}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Text>
-      </ScrollView>
+    <View style={{flex: 1, backgroundColor: 'darkorange'}}>
+    <View  style={{height: 200}}>
+    <Image style={{height: 200,  resizeMode: "stretch", width: 400}} source={require('./vpnwan.png')} />
+      </View>
 
     <Image source={{uri: 'https://cdn.grofers.com/cdn-cgi/image/q=70,metadata=none,w=3200/layout-engine/2023-09/01_1.png'}}
        style={{ flex: null,
         width: null,
-        height: 200,
+        height: 400,
+        top: -5,
         
         resizeMode: 'stretch'}}  />
        
        
-       <ScrollView style={styles.btn}>   
+       <View style={styles.btn}>   
        
       
        <Buttonx  />
+       
       
        
-       </ScrollView>
+       </View>
        
 
       
     </View>
+    
     <View style={{flex: 3, backgroundColor: '#097933'}} />
-  </View>
+    <BestSeller />
+<BestCard />
+
+  </ScrollView>
 );
 };
 
@@ -80,19 +85,24 @@ container: {
 },
 text: {
   fontWeight: 'bold',
-  fontSize: 20,
+  fontSize: 35,
+  padding: 1,
   textAlign: "left",
   bottom: 20,
   left: 8,
+  top: 2,
   
   
 },
 btn: {
-  height: 200,
-  backgroundColor: 'black',
+  height: 70,
+  backgroundColor: 'white',
   flexDirection: "row",
   borderRadius: 4,
-  
+  top: -5,
+  "transition": "all 100ms ease",
+  "transform": "scale(1.05)",
+  "boxShadow": "0 0 8px rgba(0, 0, 0, 0.5)"
 },
 });
   

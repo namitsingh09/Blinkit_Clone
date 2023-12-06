@@ -6,9 +6,8 @@ export default function SearchsBar() {
   const [search, setSearch] = useState("");
   const styles = StyleSheet.create({
     view: {
-      margin: 10,
-      padding: 2,
-      top: -8,
+      
+      top: 1,
       
       
     },
@@ -22,7 +21,7 @@ const updateSearch = (search) => {
     <View style={styles.view}>
     <SearchBar  style={{borderRadius:10, backgroundColor: "#212a28", }}
 
-      placeholder="Search butter "
+      placeholder=" Search butter "
       onChangeText={updateSearch}
       value={search}
     />

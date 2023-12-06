@@ -1,159 +1,49 @@
-import React from 'react'
-import { View } from 'react-native';
-import { Button, ButtonGroup, withTheme, Text} from '@rneui/themed';
-export default function Buttonx() {
+import React, { useRef, useEffect } from 'react';
+import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+
+const buttonData = [
+  { id: '1', label: 'Snacks' },
+  { id: '2', label: 'Drinks' },
+  { id: '3', label: 'PetFood' },
+  { id: '4', label: 'Oils' },
+  { id: '5', label: 'Mens' },
+];
+
+const Buttonx = () => {
+  const flatListRef = useRef(1);
+
+
+  const renderButton = ({ item }) => (
+    <TouchableOpacity style={styles.button} onPress={() => console.log(`Button ${item.label} clicked`)}>
+      <Text style={styles.buttonText}>{item.label}</Text>
+    </TouchableOpacity>
+  );
+
   return (
-    <View style={{ left: 10,  display: "flex", justifyContent: "center", flexDirection: "row", gap: 2, flexWrap: "wrap", top:20, }}>
-    <Button
-    title="Snacks"
-    buttonStyle={{
-      color: "green",
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
-   <Button
-    title="Smoke"
-    buttonStyle={{
-     
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
-   <Button
-    title="Drinks"
-    buttonStyle={{
-      
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
-     <Button
-    title="Drinks"
-    buttonStyle={{
-      
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
-     <Button
-    title="Drinks"
-    buttonStyle={{
-      
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
-     <Button
-    title="Drinks"
-    buttonStyle={{
-      
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
-     <Button
-    title="Drinks"
-    buttonStyle={{
-      
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
+    <FlatList
+      ref={flatListRef}
+      data={buttonData}
+      keyExtractor={(item) => item.id}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      renderItem={renderButton}
+      pagingEnabled
+    />
+  );
+};
 
-<Button
-    title="Drinks"
-    buttonStyle={{
-      
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#3498db',
+    padding: 10,
+    borderRadius: 30,
+    margin: 9,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
 
-<Button
-    title="Drinks"
-    buttonStyle={{
-      
-      borderWidth: 2,
-      borderColor: 'white',
-      borderRadius: 30,
-    }}
-    containerStyle={{
-      width: 100,
-      top: 12,
-      marginHorizontal: 10,
-      marginVertical: 10,
-    }}
-    titleStyle={{ fontWeight: 'bold' }}
-  />
-
-
-  </View>
-    
-  )
-}
+export default Buttonx;
